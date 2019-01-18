@@ -11,7 +11,7 @@ var prefix = "7";
   if (!message.content.startsWith(prefix)) return;
   var args = message.content.split(' ').slice(1);
   var argresult = args.join(' ');
-  if (message.author.id ==  501400332597723137) return;
+  if (message.author.id == "501400332597723137") return;
 
 
 if (message.content.startsWith(prefix + 'ply')) {
