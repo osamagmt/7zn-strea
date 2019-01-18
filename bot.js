@@ -1,34 +1,38 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 
-const adminprefix = "7";
-const developers = ["501400332597723137" , "474200581163057153"];
-
 
 client.on('ready', () => {
     console.log(`Logged as ${client.user.tag}`)
 })
-
 client.on('message', message => {
-    var argresult = message.content.split(` `).slice(1).join(' ');
-      if (!developers.includes(message.author.id)) return;
-  if (message.content.startsWith(adminprefix + 'ply')) {
-    client.user.setGame(argresult);
-      message.channel.send(``)
-  } else 
-  if (message.content.startsWith(adminprefix + 'wt')) {
-  client.user.setActivity(argresult, {type:'WATCHING'});
-      message.channel.send(``)
-  } else 
-  if (message.content.startsWith(adminprefix + 'ls')) {
-  client.user.setActivity(argresult , {type:'LISTENING'});
-      message.channel.send(``)
-  } else
-  if (message.content.startsWith(adminprefix + 'st')) {
-    client.user.setGame(argresult, "https://www.twitch.tv/osama_gmt");
-      message.channel.send(``)
-  }
-});
+var prefix = "7";
+
+  if (!message.content.startsWith(prefix)) return;
+  var args = message.content.split(' ').slice(1);
+  var argresult = args.join(' ');
+  if (message.author.id ==  501400332597723137) return;
+
+
+if (message.content.startsWith(prefix + 'ply')) {
+if (message.author.id !== '501400332597723137') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+client.user.setGame(argresult);
+    message.channel.sendMessage(`**${argresult}** : تم تغيير الحالة`)
+} else
+
+ 
+if (message.content.startsWith(prefix + 'st')) {
+if (message.author.id !== '501400332597723137') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+client.user.setGame(argresult, "http://twitch.tv/y04zgamer");
+    message.channel.sendMessage(`**${argresult}** :تم تغيير الحالة الى ستريمنج`)
+} else
+if (message.content.startsWith(prefix + 'wt')) {
+if (message.author.id !== '501400332597723137') return message.reply('** هذا الأمر فقط لصاحب البوت و شكراًً **')
+    client.user.setActivity(argresult, {type : 'watching'});
+ message.channel.sendMessage(`**${argresult}** : تم تغيير الووتشينق الى`)
+}
+
+ });
 
 
 client.login(process.env.BOT_TOKEN);
